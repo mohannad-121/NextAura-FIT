@@ -41,7 +41,7 @@ export default function Index() {
         <div className="glass">
           <span className="cine-eyebrow">{copy('A healthier life, made personal', 'حياة صحية تناسبك')}</span>
           <h1>{copy('Your next chapter.', 'فصلك القادم.')}<br /><em>{copy('A healthier you.', 'نسخة أصح منك.')}</em></h1>
-          <p className="cine-lede">{copy('Meet NextAura FIT. Your training, nutrition, and AI coach — connected around the life you want to live.', 'تعرّف على NextAura FIT. تدريبك وتغذيتك ومدربك الذكي في تجربة تناسب حياتك.')}</p>
+          <p className="cine-lede">{copy('Meet NextAura FIT. Your training, nutrition, and AI coach, connected around the life you want to live.', 'تعرّف على NextAura FIT. تدريبك وتغذيتك ومدربك الذكي في تجربة تناسب حياتك.')}</p>
           <div className="cine-actions">
             <Link className="cine-primary" to={start}>{copy('Start your journey', 'ابدأ رحلتك')}<ArrowRight size={18} className="rtl:rotate-180" /></Link>
             <a className="cine-link" href="#story">{copy('Explore the experience', 'اكتشف التجربة')}</a>
@@ -54,7 +54,7 @@ export default function Index() {
       id: 'story', image: '/home/home-story.jpg', position: '30% 45%', mobilePosition: '35% 40%', zoom: 'in', pan: 'start', align: 'end', tint: '#1b3a5c',
       content: (
         <div className="glass">
-          <span className="cine-eyebrow">{copy('01 · The NextAura way', '01 · على طريقة NextAura')}</span>
+          <span className="cine-eyebrow">{copy('The NextAura way', 'على طريقة NextAura')}</span>
           <h2>{copy('It starts with\nyour story.', 'البداية\nمن قصتك.')}</h2>
           <p className="cine-lede">{copy('Your goals, your experience, your health. Build a personal profile with your own answers so your coaching starts in the right place.', 'أهدافك وخبرتك وصحتك. ابنِ ملفك بإجاباتك أنت لتبدأ رحلة التدريب المناسبة.')}</p>
           <div className="cine-stack glass-sub">
@@ -71,7 +71,7 @@ export default function Index() {
       id: 'train', image: '/home/scene-02-athlete.jpg', position: '58% 30%', mobilePosition: '62% 22%', zoom: 'out', pan: 'start', align: 'start', height: 180, tint: '#0f2a46',
       content: (
         <div className="glass">
-          <span className="cine-eyebrow">{copy('02 · Train smarter', '02 · تدرّب بذكاء')}</span>
+          <span className="cine-eyebrow">{copy('Train smarter', 'تدرّب بذكاء')}</span>
           <h2>{copy('Every rep,\nguided by intelligence.', 'كل تكرار\nموجّه بالذكاء.')}</h2>
           <p className="cine-lede">{copy('NextAura FIT turns your training into a personalized performance journey: clear cues, counted reps, and a plan that adapts to you.', 'يحوّل NextAura FIT تدريبك إلى رحلة أداء شخصية: توجيهات واضحة وعدّ للتكرارات وخطة تتكيف معك.')}</p>
           <div className="cine-card glass-sub" style={{ marginTop: 22 }}>
@@ -88,7 +88,7 @@ export default function Index() {
       id: 'focus', image: '/home/home-focus.jpg', position: '70% 40%', mobilePosition: '65% 30%', zoom: 'in', pan: 'end', align: 'start', height: 190, tint: '#2a1f3d',
       content: (
         <div className="glass">
-          <span className="cine-eyebrow">{copy('03 · Find your focus', '03 · حدد هدفك')}</span>
+          <span className="cine-eyebrow">{copy('Find your focus', 'حدد هدفك')}</span>
           <h2>{copy('Find your focus.\nMake your move.', 'حدد هدفك.\nوابدأ الحركة.')}</h2>
           <p className="cine-lede">{copy('Tap a muscle and discover real exercises from the library, with sets, reps, and clear instructions for your training space.', 'اختر عضلة واكتشف تمارين المكتبة مع المجموعات والتكرارات والتعليمات الواضحة.')}</p>
           <div className="cine-anatomy">
@@ -110,7 +110,7 @@ export default function Index() {
       id: 'live', image: '/home/home-live.jpg', position: '28% 45%', mobilePosition: '30% 40%', zoom: 'out', pan: 'start', align: 'end', tint: '#3a2a1a',
       content: (
         <div className="glass">
-          <span className="cine-eyebrow">{copy('04 · Live Coach', '04 · المدرب المباشر')}</span>
+          <span className="cine-eyebrow">{copy('Live Coach', 'المدرب المباشر')}</span>
           <h2>{copy('A little guidance.\nIn the moment.', 'توجيه بسيط.\nفي الوقت المناسب.')}</h2>
           <p className="cine-lede">{copy('Live Coach helps you practice supported movements with camera-based form feedback. Clear cues, counted reps, and a camera that stays under your control.', 'يساعدك المدرب المباشر على أداء الحركات المدعومة بتوجيه واضح وعدّ التكرارات. الكاميرا تحت سيطرتك دائماً.')}</p>
           <div className="cine-camera glass-sub"><Camera size={40} strokeWidth={1.2} /><h3>{copy('Your space. Your session.', 'مساحتك. جلستك.')}</h3><p>{copy('Full body in frame. One movement at a time.', 'أظهر جسمك كاملاً. حركة واحدة كل مرة.')}</p></div>
@@ -123,7 +123,7 @@ export default function Index() {
       id: 'coach', image: '/home/scene-04-coach.jpg', position: '46% 28%', mobilePosition: '46% 18%', zoom: 'in', pan: 'end', align: 'start', height: 180, tint: '#102a3a',
       content: (
         <div className="glass">
-          <span className="cine-eyebrow">{copy('05 · Your AI Coach', '05 · مدربك الذكي')}</span>
+          <span className="cine-eyebrow">{copy('Your AI Coach', 'مدربك الذكي')}</span>
           <h2>{copy('Good questions.\nA personal conversation.', 'أسئلتك مهمة.\nوحوارك شخصي.')}</h2>
           <p className="cine-lede">{copy('Talk through your training, nutrition, or next step in English or Arabic, by text or voice, and turn the answer into your weekly plan.', 'ناقش تدريبك وتغذيتك وخطوتك القادمة بالعربية أو الإنجليزية، كتابةً أو صوتاً، وحوّل الإجابة إلى خطتك الأسبوعية.')}</p>
           <div className="cine-card glass-sub" style={{ marginTop: 22 }}>
@@ -139,7 +139,7 @@ export default function Index() {
       id: 'week', image: '/home/home-week.jpg', position: '65% 50%', mobilePosition: '70% 45%', zoom: 'out', pan: 'start', align: 'end', height: 190, tint: '#1a2f4a',
       content: (
         <div className="glass">
-          <span className="cine-eyebrow">{copy('06 · Your rhythm', '06 · إيقاعك')}</span>
+          <span className="cine-eyebrow">{copy('Your rhythm', 'إيقاعك')}</span>
           <h2>{copy('A week that works\nfor you.', 'أسبوع\nيناسبك.')}</h2>
           <p className="cine-lede">{copy('Bring training and recovery into a clear weekly rhythm, and keep your Fitbit steps and health metrics in the same picture.', 'نظّم التدريب والتعافي في أسبوع واضح، واجمع خطوات Fitbit ومؤشراتك الصحية في الصورة نفسها.')}</p>
           <div className="cine-days">
@@ -182,7 +182,21 @@ export default function Index() {
       <a href="#home-content" className="aura-skip">{copy('Skip to content', 'انتقل إلى المحتوى')}</a>
       <main id="home-content">
         <CinematicHome scenes={scenes} rtl={ar}>
-          <footer className="cine-footer"><BrandLogo /><p>AI-Powered Healthy Lifestyle</p><small>© {new Date().getFullYear()} NextAura FIT</small></footer>
+          <footer className="cine-footer">
+            <div className="cine-footer-glass">
+              <div className="cine-footer-brand">
+                <BrandLogo onDark />
+                <p>{copy('AI-Powered Healthy Lifestyle. Training, nutrition, and coaching, connected around you.', 'نمط حياة صحي مدعوم بالذكاء الاصطناعي. تدريب وتغذية وتوجيه في تجربة تناسبك.')}</p>
+              </div>
+              <nav className="cine-footer-links" aria-label={copy('Footer', 'تذييل الصفحة')}>
+                <Link to="/workouts">{copy('Workouts', 'التمارين')}</Link>
+                <Link to="/live-coach">{copy('Live Coach', 'المدرب المباشر')}</Link>
+                <Link to="/coach">{copy('AI Coach', 'المدرب الذكي')}</Link>
+                <Link to="/schedule">{copy('Schedule', 'الجدول')}</Link>
+              </nav>
+              <small>© {new Date().getFullYear()} NextAura FIT. {copy('All rights reserved.', 'جميع الحقوق محفوظة.')}</small>
+            </div>
+          </footer>
         </CinematicHome>
       </main>
     </div>

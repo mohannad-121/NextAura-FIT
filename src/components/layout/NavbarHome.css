@@ -3,6 +3,8 @@
   --nav-bg: rgb(6 13 24 / .22);
   --nav-border: rgb(255 255 255 / .12);
   --nav-shadow: 0 10px 40px rgb(0 0 0 / .18);
+  /* light halo: a white outline glow behind the logo for AA contrast; the artwork's own colours are untouched */
+  --logo-halo: drop-shadow(0 0 1px #fff) drop-shadow(0 0 1px #fff) drop-shadow(0 0 2px rgb(255 255 255 / .95)) drop-shadow(0 0 10px rgb(255 255 255 / .55));
   background:var(--nav-bg);
   border:1px solid var(--nav-border);
   border-radius:22px;
@@ -23,12 +25,15 @@
 }
 .cine-root .site-navbar.is-home .site-navbar-inner { height:64px; }
 
-/* Logo: the official artwork is an opaque PNG on white, so it sits in a deliberate white pill */
-.cine-root .site-navbar.is-home .site-logo { background:#fff; border-radius:12px; padding:4px 10px; box-shadow:0 4px 18px rgb(0 0 0 / .25), inset 0 0 0 1px rgb(255 255 255 / .6); }
+/* Logo: transparent derivative of the official artwork; a soft light halo lifts the navy wordmark off dark imagery without altering its colours */
+.cine-root .site-navbar.is-home .site-logo { padding:0; display:flex; align-items:center; height:48px; }
+.cine-root .site-navbar.is-home .site-logo img { filter:var(--logo-halo); }
+.cine-root .site-navbar.is-home .brand-wordmark { width:auto; height:44px; }
+.cine-root .site-navbar.is-home .brand-mark { width:auto; height:40px; }
 
 /* Links */
 .cine-root .site-navbar.is-home .site-nav-link {
-  color:rgb(238 244 249 / .74); font-weight:500; letter-spacing:.01em; border-radius:12px;
+  color:rgb(238 244 249 / .84); font-weight:500; letter-spacing:.01em; border-radius:12px;
   transition:color .25s ease, background-color .25s ease;
 }
 .cine-root .site-navbar.is-home .site-nav-link:hover { color:#fff; background:rgb(255 255 255 / .08); }
@@ -54,14 +59,13 @@
   background:rgb(6 13 24 / .7); border-top:1px solid rgb(255 255 255 / .1); box-shadow:0 -10px 40px rgb(0 0 0 / .35);
   backdrop-filter:blur(22px) saturate(1.4); -webkit-backdrop-filter:blur(22px) saturate(1.4);
 }
-.cine-root .site-mobile-nav .mobile-nav-item { color:rgb(238 244 249 / .6); }
+.cine-root .site-mobile-nav .mobile-nav-item { color:rgb(238 244 249 / .72); }
 .cine-root .site-mobile-nav .mobile-nav-item:hover { color:#fff; background:rgb(255 255 255 / .06); }
 .cine-root .site-mobile-nav .mobile-nav-item.is-active { color:#fff; background:rgb(255 255 255 / .12); }
 
 @media (max-width: 767px) {
   .cine-root .site-navbar.is-home { border-radius:18px; }
   .cine-root .site-navbar.is-home .site-navbar-inner { height:58px; }
-  .cine-root .site-navbar.is-home .site-logo { padding:3px 6px; border-radius:10px; }
   .cine-root .site-navbar.is-home .site-nav-utility { min-height:40px; min-width:40px; padding-inline:10px; }
 }
 @media (prefers-reduced-motion: reduce) {

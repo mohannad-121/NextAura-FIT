@@ -107,7 +107,7 @@ export function Navbar({ variant = 'default' }: NavbarProps) {
       <div className="container mx-auto px-4">
         <div className="site-navbar-inner flex h-16 items-center justify-between gap-3">
           <Link to="/" className="site-logo flex min-h-11 shrink-0 items-center gap-2" aria-label="NextAura FIT">
-            <BrandLogo className="hidden sm:block" /><BrandLogo mark className="sm:hidden" />
+            <BrandLogo onDark={variant === 'home'} className="hidden sm:block" /><BrandLogo mark onDark={variant === 'home'} className="sm:hidden" />
           </Link>
 
           <div className="site-nav-links hidden items-center gap-1 xl:flex">
