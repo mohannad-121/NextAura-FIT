@@ -1,0 +1,131 @@
+/* One connected cinematic homepage: fixed evolving backdrop + sticky glass panels. */
+.cine-home { position:relative; background:#050b14; color:#eef4f9; isolation:isolate; }
+.cine-home ::selection { background:rgb(38 135 232 / .5); }
+
+/* Backdrop ------------------------------------------------------------------ */
+.cine-backdrop { position:fixed; inset:0; z-index:0; overflow:hidden; background:#050b14; pointer-events:none; }
+.cine-bg { position:absolute; inset:0; will-change:opacity; }
+.cine-bg img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:var(--cine-pos); will-change:transform,filter; transform-origin:50% 50%; }
+.cine-bg-tint { position:absolute; inset:0; mix-blend-mode:soft-light; }
+.cine-grain { position:absolute; inset:-50%; opacity:.055; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); animation:cine-grain 1.2s steps(3) infinite; }
+@keyframes cine-grain { 0% { transform:translate(0,0); } 33% { transform:translate(-2%,1%); } 66% { transform:translate(1%,-2%); } 100% { transform:translate(0,0); } }
+.cine-vignette { position:absolute; inset:0; background:radial-gradient(120% 90% at 50% 45%, transparent 45%, rgb(5 11 20 / .72) 100%), linear-gradient(180deg, rgb(5 11 20 / .55), transparent 22%, transparent 70%, rgb(5 11 20 / .6)); }
+
+/* Flow ----------------------------------------------------------------------- */
+.cine-flow { position:relative; z-index:1; }
+.cine-scene { position:relative; }
+.cine-sticky { position:sticky; top:0; min-height:100svh; display:flex; align-items:center; padding:112px clamp(20px,6vw,96px) 48px; }
+.cine-scene.is-start .cine-sticky { justify-content:flex-start; }
+.cine-scene.is-end .cine-sticky { justify-content:flex-end; }
+.cine-scene.is-center .cine-sticky { justify-content:center; text-align:center; }
+.cine-panel { width:min(100%, 560px); will-change:transform,opacity,filter; }
+.cine-scene.is-center .cine-panel { width:min(100%, 760px); }
+.cine-scene#hero .cine-panel { width:min(100%, 680px); }
+
+/* Glass surfaces ------------------------------------------------------------- */
+.glass { position:relative; border-radius:28px; padding:34px 36px; background:linear-gradient(160deg, rgb(255 255 255 / .11), rgb(255 255 255 / .045)); border:1px solid rgb(255 255 255 / .14); box-shadow:0 30px 80px rgb(0 0 0 / .45), inset 0 1px 0 rgb(255 255 255 / .14); backdrop-filter:blur(26px) saturate(1.35); -webkit-backdrop-filter:blur(26px) saturate(1.35); }
+.glass::before { content:''; position:absolute; inset:0; border-radius:inherit; pointer-events:none; background:radial-gradient(60% 40% at 15% 0%, rgb(255 255 255 / .12), transparent 70%); }
+.glass-sub { border-radius:18px; padding:16px 18px; background:rgb(5 11 20 / .35); border:1px solid rgb(255 255 255 / .08); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); }
+.glass-bright { background:linear-gradient(160deg, rgb(255 255 255 / .86), rgb(255 255 255 / .7)); color:#17324d; border-color:rgb(255 255 255 / .5); }
+
+/* Typography ----------------------------------------------------------------- */
+.cine-eyebrow { display:inline-flex; align-items:center; gap:10px; font-size:11px; letter-spacing:.22em; text-transform:uppercase; font-weight:600; color:rgb(238 244 249 / .62); }
+.cine-eyebrow::before { content:''; width:26px; height:1px; background:currentColor; opacity:.7; }
+.cine-panel h1 { font-size:clamp(42px,6vw,82px); line-height:.98; letter-spacing:-.045em; font-weight:650; margin:18px 0 20px; color:#fff; }
+.cine-panel h1 em { font-style:normal; background:linear-gradient(100deg,#8fc6ff,#ffffff 50%,#9ae6b8); -webkit-background-clip:text; background-clip:text; color:transparent; }
+.cine-panel h2 { font-size:clamp(30px,3.6vw,50px); line-height:1.06; letter-spacing:-.035em; font-weight:620; margin:14px 0 14px; color:#fff; white-space:pre-line; }
+.cine-lede { font-size:15.5px; line-height:1.8; color:rgb(238 244 249 / .76); max-width:48ch; }
+.cine-scene.is-center .cine-lede { margin-inline:auto; }
+html[dir="rtl"] .cine-panel h1, html[dir="rtl"] .cine-panel h2 { letter-spacing:0; }
+
+/* Actions -------------------------------------------------------------------- */
+.cine-actions { display:flex; align-items:center; flex-wrap:wrap; gap:14px 26px; margin-top:26px; }
+.cine-scene.is-center .cine-actions { justify-content:center; }
+.cine-primary { display:inline-flex; align-items:center; gap:12px; min-height:50px; padding:0 22px; border-radius:16px; font-weight:600; font-size:14px; color:#06111c; background:linear-gradient(120deg,#ffffff,#cfe6ff); box-shadow:0 12px 36px rgb(38 135 232 / .35), inset 0 -1px 0 rgb(0 0 0 / .08); transition:transform .25s ease, box-shadow .25s ease; }
+.cine-primary:hover { transform:translateY(-1px); box-shadow:0 16px 44px rgb(38 135 232 / .45); }
+.cine-link { display:inline-flex; align-items:center; gap:10px; min-height:44px; font-size:14px; font-weight:600; color:#fff; border-bottom:1px solid rgb(255 255 255 / .3); padding-bottom:2px; transition:border-color .25s; }
+.cine-link:hover { border-color:#fff; }
+.cine-promises { display:flex; flex-wrap:wrap; gap:18px; margin-top:22px; font-size:12px; color:rgb(238 244 249 / .6); }
+.cine-promises span { display:flex; align-items:center; gap:7px; }
+.cine-promises svg { color:#8fe0b0; }
+.cine-scroll-hint { position:absolute; bottom:28px; inset-inline:0; display:flex; justify-content:center; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:rgb(238 244 249 / .5); }
+.cine-scroll-hint i { display:block; width:1px; height:34px; margin-inline-start:12px; background:linear-gradient(180deg, rgb(255 255 255 / .6), transparent); animation:cine-hint 2.2s ease-in-out infinite; }
+@keyframes cine-hint { 0%,100% { transform:scaleY(.4); transform-origin:top; opacity:.3; } 50% { transform:scaleY(1); opacity:1; } }
+
+/* Panel widgets -------------------------------------------------------------- */
+.cine-stack { display:grid; gap:10px; margin-top:24px; }
+.cine-row { display:flex; align-items:center; gap:14px; font-size:14px; }
+.cine-row > span:first-child { font-size:11px; letter-spacing:.14em; color:#8fc6ff; font-variant-numeric:tabular-nums; }
+.cine-row strong { font-weight:600; color:#fff; }
+.cine-row > svg:last-child { margin-inline-start:auto; color:#8fe0b0; }
+.cine-note { display:block; margin-top:14px; font-size:12px; color:rgb(238 244 249 / .55); }
+
+.cine-card header { display:flex; align-items:center; gap:10px; font-size:11px; letter-spacing:.14em; text-transform:uppercase; font-weight:600; color:rgb(238 244 249 / .7); margin-bottom:12px; }
+.cine-card header em { font-style:normal; margin-inline-start:auto; letter-spacing:.06em; color:#8fe0b0; display:flex; align-items:center; gap:6px; }
+.cine-card header em::before { content:''; width:6px; height:6px; border-radius:50%; background:#8fe0b0; box-shadow:0 0 12px #8fe0b0; }
+.cine-card > strong { display:block; font-size:19px; font-weight:600; letter-spacing:-.01em; }
+.cine-card > small { display:block; margin-top:8px; font-size:12px; color:rgb(238 244 249 / .6); }
+.cine-reps { display:flex; gap:5px; margin:14px 0 8px; }
+.cine-reps i { flex:1; height:4px; border-radius:2px; background:rgb(255 255 255 / .14); }
+.cine-reps i.is-done { background:linear-gradient(90deg,#2687e8,#8fe0b0); box-shadow:0 0 10px rgb(38 135 232 / .6); }
+.cine-mark { width:22px; height:22px; }
+.cine-bubble { display:inline-block; padding:10px 14px; border-radius:14px 14px 4px 14px; background:rgb(38 135 232 / .22); border:1px solid rgb(38 135 232 / .4); font-size:13px; color:#fff; margin-bottom:12px; }
+html[dir="rtl"] .cine-bubble { border-radius:14px 14px 14px 4px; }
+.cine-answer { font-size:14px; line-height:1.75; color:rgb(238 244 249 / .86); }
+
+.cine-pills { display:flex; flex-wrap:wrap; gap:6px; margin:16px 0 12px; }
+.cine-pills button { min-height:36px; padding:0 12px; border-radius:11px; font-size:12px; font-weight:500; color:rgb(238 244 249 / .8); background:rgb(255 255 255 / .06); border:1px solid rgb(255 255 255 / .1); transition:background .2s, border-color .2s; }
+.cine-pills button[aria-pressed="true"] { background:rgb(38 135 232 / .25); border-color:rgb(143 198 255 / .7); color:#fff; }
+.cine-exercise { display:flex; justify-content:space-between; align-items:center; gap:12px; padding:12px 0; border-top:1px solid rgb(255 255 255 / .08); font-size:13px; }
+.cine-exercise strong { font-weight:600; }
+.cine-exercise small { color:rgb(238 244 249 / .55); font-variant-numeric:tabular-nums; }
+.cine-anatomy { display:grid; grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr); gap:18px; align-items:center; margin-top:18px; }
+.cine-anatomy > .glass-sub { padding:10px; display:flex; justify-content:center; }
+.cine-anatomy .anatomy-compact svg [style*='cursor'] { pointer-events:auto; cursor:pointer; }
+.cine-anatomy .anatomy-loading { font-size:12px; color:rgb(238 244 249 / .6); padding:40px 10px; text-align:center; }
+
+.cine-camera { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; min-height:170px; text-align:center; border:1px dashed rgb(255 255 255 / .22); border-radius:18px; margin-top:20px; padding:20px; }
+.cine-camera svg { color:#8fc6ff; }
+.cine-camera h3 { font-size:18px; font-weight:600; }
+.cine-camera p { font-size:12px; color:rgb(238 244 249 / .6); }
+.cine-caption { display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; margin-top:12px; font-size:11px; color:rgb(238 244 249 / .55); }
+.cine-dot { display:inline-block; width:6px; height:6px; border-radius:50%; background:#8fe0b0; margin-inline-end:6px; }
+
+.cine-days { display:grid; gap:8px; margin-top:20px; }
+.cine-days button { display:flex; align-items:center; gap:12px; text-align:start; padding:12px 14px; border-radius:16px; background:rgb(255 255 255 / .05); border:1px solid rgb(255 255 255 / .08); transition:background .25s, border-color .25s; }
+.cine-days button.is-open { background:rgb(38 135 232 / .16); border-color:rgb(143 198 255 / .5); }
+.cine-days button > div { flex:1; min-width:0; }
+.cine-days strong { display:block; font-size:14px; }
+.cine-days span { font-size:12px; color:rgb(238 244 249 / .6); }
+.cine-days p { margin-top:6px; font-size:12px; color:rgb(238 244 249 / .8); line-height:1.6; }
+.cine-days > button > svg { color:rgb(238 244 249 / .5); }
+.cine-days .app-emoji { width:34px; height:34px; border-radius:11px; }
+.cine-metrics { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:18px; }
+.cine-metrics > div { display:flex; align-items:center; gap:10px; font-size:13px; padding:12px 14px; }
+.cine-metrics svg:first-child { color:#8fc6ff; }
+.cine-metrics svg:last-child { margin-inline-start:auto; color:#8fe0b0; width:16px; }
+
+/* Footer --------------------------------------------------------------------- */
+.cine-footer { position:relative; z-index:1; display:flex; flex-wrap:wrap; align-items:center; gap:14px 28px; padding:36px clamp(20px,6vw,96px) 48px; background:linear-gradient(180deg, transparent, rgb(5 11 20 / .9) 30%); font-size:12px; color:rgb(238 244 249 / .55); }
+.cine-footer p { margin-inline-end:auto; }
+
+/* Reduced motion & mobile ---------------------------------------------------- */
+.cine-home.is-static .cine-grain, .cine-home.is-static .cine-scroll-hint i { animation:none; }
+@media (max-width: 900px) {
+  .cine-sticky { padding:92px 16px calc(104px + env(safe-area-inset-bottom)); align-items:flex-end; }
+  .cine-footer { padding-bottom:calc(96px + env(safe-area-inset-bottom)); }
+  .cine-scene.is-end .cine-sticky, .cine-scene.is-start .cine-sticky { justify-content:center; }
+  .cine-panel, .cine-scene.is-center .cine-panel, .cine-scene#hero .cine-panel { width:100%; }
+  .glass { padding:22px 20px; border-radius:22px; }
+  .cine-bg img { object-position:var(--cine-pos-mobile); }
+  .cine-lede { font-size:14px; line-height:1.7; display:-webkit-box; -webkit-line-clamp:4; -webkit-box-orient:vertical; overflow:hidden; }
+  .cine-anatomy { grid-template-columns:1fr; }
+  .cine-anatomy > .glass-sub { display:none; }
+  .cine-metrics { grid-template-columns:1fr; }
+  .cine-camera { min-height:120px; }
+  .cine-scroll-hint { display:none; }
+  .cine-panel h2 { font-size:clamp(28px,8vw,36px); }
+}
+@media (max-width: 900px) and (max-height: 760px) {
+  .cine-exercise:nth-child(n+4), .cine-days button:nth-child(3), .cine-metrics { display:none; }
+}

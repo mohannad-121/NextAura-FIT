@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import {
   BellRing,
@@ -29,6 +29,7 @@ import {
 import { cn } from '@/lib/utils';
 import { Sheet, SheetClose, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { BrandLogo } from '@/components/brand/BrandLogo';
+import './NavbarHome.css';
 
 type NavbarVariant = 'default' | 'home';
 
@@ -44,6 +45,18 @@ export function Navbar({ variant = 'default' }: NavbarProps) {
   const { user, signOut } = useAuth();
   const location = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  // Home variant only: the glass bar grows slightly denser once the hero starts to move.
+  useEffect(() => {
+    if (variant !== 'home') return;
+    let frame = 0;
+    const update = () => { frame = 0; setScrolled(window.scrollY > 24); };
+    const onScroll = () => { if (!frame) frame = window.requestAnimationFrame(update); };
+    update();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => { window.removeEventListener('scroll', onScroll); if (frame) window.cancelAnimationFrame(frame); };
+  }, [variant]);
 
   const isArabic = language === 'ar';
   const navItems = [
@@ -84,6 +97,7 @@ export function Navbar({ variant = 'default' }: NavbarProps) {
       <nav
         aria-label={primaryNavigationLabel}
         data-variant={variant}
+        data-scrolled={variant === 'home' ? scrolled : undefined}
         className={cn(
           'site-navbar fixed left-0 right-0 top-0 pointer-events-auto border-b border-border/50 glass-card',
           mobileMenuOpen ? 'z-40' : 'z-[100]',
